@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { MdPersonAddAlt1 } from 'react-icons/md';
-
+import { addContact } from '../../redux/contactsSlice';
 import { Form, Label } from './ContactForm.styled';
 import { Btn } from '../Btn/Btn';
 import { InputItem } from './InputItem';
 
-export const ContactForm = ({ onAddBtnClick }) => {
+export const ContactForm = () => {
+  const dispatch = useDispatch();
+
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -25,7 +27,7 @@ export const ContactForm = ({ onAddBtnClick }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    onAddBtnClick({ name, number });
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 
@@ -67,8 +69,4 @@ export const ContactForm = ({ onAddBtnClick }) => {
       />
     </Form>
   );
-};
-
-ContactForm.propTypes = {
-  onAddBtnClick: PropTypes.func.isRequired,
 };
