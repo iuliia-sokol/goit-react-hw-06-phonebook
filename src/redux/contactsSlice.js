@@ -4,8 +4,6 @@ import Notiflix from 'notiflix';
 import { notifySettings } from '../utils/notifySettings';
 import { defaultContacts } from '../utils/defaultContacts';
 
-// console.log(defaultContacts);
-
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: defaultContacts,
@@ -34,7 +32,7 @@ export const contactsSlice = createSlice({
     },
 
     removeContact: (state, { payload }) => {
-      console.log(payload);
+      // console.log(payload);
       const { name, id } = payload;
       Notiflix.Notify.info(
         `${name} was successfully deleted from your contacts`,
